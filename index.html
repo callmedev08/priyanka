@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Countdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+    }
+
+    .birthdayimg {
+      background-image: url('https://cdn.pixabay.com/photo/2018/02/23/21/29/roses-frame-3176667_960_720.jpg');
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .birthdayimg::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .birthdayimg > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .topleft {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 25px;
+      color: yellow;
+    }
+
+    .bottomleft {
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      font-size: 20px;
+      color: #ffcccc;
+    }
+
+    .middle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    #amx {
+      font-size: 60px;
+      margin-top: 20px;
+    }
+
+    hr {
+      margin: auto;
+      width: 50%;
+      border: 2px solid white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="birthdayimg">
+    <div class="topleft">
+      <p>Madam Ji ki Birthday</p>
+    </div>
+    <div class="middle">
+      <h1>Annu are you ready?</h1>
+      <hr>
+      <p id="amx"></p>
+    </div>
+    <div class="bottomleft">
+      <p>A small gift from Dev</p>
+    </div>
+  </div>
+
+  <script>
+    var countDownDate = new Date("May 22, 2025 00:00:00").getTime();
+
+    var countdownfunction = setInterval(function () {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance > 0) {
+        document.getElementById("amx").innerHTML =
+          days + "D " + hours + "H " + minutes + "M " + seconds + "S ";
+      } else {
+        clearInterval(countdownfunction);
+        document.getElementById("amx").innerHTML = "HAPPY BIRTHDAY Annu🎉🎂";
+        window.location.href = "surprise.html"; // Local redirection
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
